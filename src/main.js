@@ -4,8 +4,14 @@ import Vue from 'vue'
 import './plugins/bootstrap-vue'
 import App from './App.vue'
 import VueSocketIO from 'vue-socket.io';
+import Vuex from 'vuex';
+import { BootstrapVueIcons } from 'bootstrap-vue'
+
+Vue.use(BootstrapVueIcons)
 
 Vue.config.productionTip = false
+
+Vue.use(require('vue-cookies'));
 
 Vue.use(new VueSocketIO({
   debug: true,
@@ -14,6 +20,15 @@ Vue.use(new VueSocketIO({
   options: {},
 }));
 
+Vue.use(Vuex);
+const store = new Vuex.Store({
+  state: {
+    user: '',
+    loggedIn: false,
+  }
+});
+
 new Vue({
+  store,
   render: h => h(App),
 }).$mount('#app')
