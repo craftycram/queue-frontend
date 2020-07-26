@@ -12,6 +12,7 @@ Vue.use(BootstrapVueIcons)
 Vue.config.productionTip = false
 
 Vue.use(require('vue-cookies'));
+Vue.$cookies.config('7d')
 
 Vue.use(new VueSocketIO({
   debug: true,
