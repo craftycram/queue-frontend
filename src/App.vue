@@ -1,17 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-button></b-button>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+  },
+  sockets: {
+    connect() {
+      console.log('socket connected');
+      this.connected = 'Connected';
+      this.$socket.emit('register_front');
+    },
+
+    disconnect() {
+      console.log('socket disconnected');
+      this.connected = 'Disonnected';
+    },
+    // Fired when the server sends something on the "messageChannel" channel.
+    messageChannel(data) {
+      // eslint-disable-next-line no-console
+      console.log('message-channel');
+      // eslint-disable-next-line no-console
+      console.log(data);
+    },
+  },
+  mounted() {
+    this.sockets.subscribe('broadcastLike', (data) => {
+      // eslint-disable-next-line no-console
+      console.log(data);
+    });
   }
 }
 </script>
