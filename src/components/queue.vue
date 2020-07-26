@@ -16,7 +16,7 @@
       <b-card v-show="connected" v-for="user in queue" :key="user.id" class="user">
           <b-card-title>
             {{user.name}}
-            <b-button v-show="admin || $store.state.user===user.name" class="button" @click="removeFromQueue(user.id)">
+            <b-button v-show="$store.state.admin || $store.state.user===user.name" class="button" @click="removeFromQueue(user.id)">
               <b-icon icon="trash"></b-icon>
               <!--<b-icon icon="x"></b-icon>-->
             </b-button>
@@ -34,7 +34,6 @@
         queue: [],
         connectedMsg: 'Keine Verbindung zum Server',
         connected: false,
-        admin: false,
       }
     },
     sockets: {
@@ -67,9 +66,9 @@
       });
       this.sockets.subscribe('admin', (data) => {
         if (data) {
-          this.admin = true;
+          this.$store.state.admin = true;
         } else {
-          this.admin = false;
+          this.$store.state.admin = false;
         }
       });
     },

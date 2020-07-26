@@ -26,6 +26,7 @@ const store = new Vuex.Store({
   state: {
     user: '',
     loggedIn: false,
+    admin: false,
   }
 });
 

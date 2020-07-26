@@ -50,6 +50,7 @@ export default {
       this.$cookies.set('loggedIn', false);
       this.$store.state.user = '';
       this.$store.state.loggedIn = false;
+      this.$store.state.admin = false;
     }
   }
 }
