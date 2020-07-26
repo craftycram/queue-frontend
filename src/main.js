@@ -1,4 +1,7 @@
+import '@babel/polyfill'
+import 'mutationobserver-shim'
 import Vue from 'vue'
+import './plugins/bootstrap-vue'
 import App from './App.vue'
 import VueSocketIO from 'vue-socket.io';
 
@@ -8,9 +11,7 @@ Vue.use(new VueSocketIO({
   debug: true,
   // eslint-disable-next-line no-template-curly-in-string
   connection: 'http://localhost:3001',
-  options: {
-    useConnectionNamespace: true,
-  },
+  options: {},
 }));
 
 new Vue({
