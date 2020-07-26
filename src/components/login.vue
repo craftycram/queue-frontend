@@ -26,13 +26,15 @@ export default {
     }
   },
   mounted() {
-    if (this.$cookies.get('loggedIn')) {
-      this.$store.state.loggedIn = true;
-      this.inputName = this.$cookies.get('login')
-      this.$store.state.user = this.$cookies.get('login')
-      this.$socket.emit('auth', {
-        name: this.$store.state.user
-        })
+    if (this.$cookies.isKey('loggedIn')) {
+      if (this.$cookies.get('loggedIn') === 'true') {
+        this.$store.state.loggedIn = true;
+        this.inputName = this.$cookies.get('login')
+        this.$store.state.user = this.$cookies.get('login')
+        this.$socket.emit('auth', {
+          name: this.$store.state.user
+          })
+      }
     }
   },
   methods: {
@@ -47,6 +49,7 @@ export default {
     },
     logout() {
       this.$cookies.remove('login');
+      this.$cookies.remove('loggedIn');
       this.$cookies.set('loggedIn', false);
       this.$store.state.user = '';
       this.$store.state.loggedIn = false;

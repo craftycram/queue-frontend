@@ -5,7 +5,7 @@
         <h1>Warteschlange</h1>
         <!--{{queue}}-->
       </b-col>
-      <b-col v-show="$store.state.loggedIn" md="auto">
+      <b-col v-show="$store.state.loggedIn===true" md="auto">
         <b-button @click="addToQueue">In Warteschlange</b-button>
       </b-col>
     </b-row>
