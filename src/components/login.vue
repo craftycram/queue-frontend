@@ -27,6 +27,9 @@ export default {
   },
   mounted() {
     if (this.$cookies.get('loggedIn')) {
+      this.$socket.emit('auth', {
+        name: this.$store.state.user
+        })
       this.$store.state.loggedIn = true;
       this.inputName = this.$cookies.get('login')
       this.$store.state.user = this.$cookies.get('login')
