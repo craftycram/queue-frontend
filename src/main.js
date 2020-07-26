@@ -10,7 +10,7 @@ Vue.config.productionTip = false
 Vue.use(new VueSocketIO({
   debug: true,
   // eslint-disable-next-line no-template-curly-in-string
-  connection: 'http://localhost:3001',
+  connection: 'https://ionos2.marcrufeis.de:3002',
   options: {},
 }));
 
