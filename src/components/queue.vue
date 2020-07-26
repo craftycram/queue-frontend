@@ -65,9 +65,9 @@
         this.queue.push(data);
       });
       this.sockets.subscribe('admin', (data) => {
-        if (data) {
+        if (data.name === this.$store.state.user && data.admin) {
           this.$store.state.admin = true;
-        } else {
+        } else if (data.name === this.$store.state.user && !data.admin) {
           this.$store.state.admin = false;
         }
       });
