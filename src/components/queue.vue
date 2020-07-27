@@ -16,6 +16,18 @@
       <b-card v-show="connected" v-for="user in queue" :key="user.id" class="user">
           <b-card-title>
             {{user.name}}
+
+
+            <b-button v-show="$store.state.admin && user.id>1" class="btton" @click="move(user.id, 'up')">
+              <b-icon icon="caret-up"></b-icon>
+              <!--<b-icon icon="x"></b-icon>-->
+            </b-button>
+            <b-button v-show="$store.state.admin && user.id<queue.length" disabled="true" class="btton" @click="move(user.id, 'down')">
+              <b-icon icon="caret-down"></b-icon>
+              <!--<b-icon icon="x"></b-icon>-->
+            </b-button>
+
+
             <b-button v-show="$store.state.admin || $store.state.user===user.name" class="button" @click="removeFromQueue(user.id)">
               <b-icon icon="trash"></b-icon>
               <!--<b-icon icon="x"></b-icon>-->
@@ -81,6 +93,12 @@
       removeFromQueue(id) {
         this.$socket.emit('remove', {
           id
+        });
+      },
+      move(id, dir) {
+        this.$socket.emit('move', {
+          id,
+          dir
         });
       }
     }
