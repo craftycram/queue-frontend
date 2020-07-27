@@ -6,8 +6,8 @@
         <!--{{queue}}-->
       </b-col>
       <b-col v-show="$store.state.loggedIn===true" md="auto">
-        <b-button v-show="$store.state.admin" variant="secondary" @click="dummyData">DummyData</b-button>
-        <b-button @click="addToQueue">In Warteschlange</b-button>
+        <b-button style="margin-right: 10px;" v-show="$store.state.admin" variant="secondary" @click="dummyData">DummyData</b-button>
+        <b-button variant="primary" @click="addToQueue">In Warteschlange</b-button>
       </b-col>
     </b-row>
     <b-row v-show="!connected">
@@ -19,17 +19,17 @@
             {{user.name}}
 
 
-            <b-button v-show="$store.state.admin && user.id>1" class="btton" @click="move(user.id, 'up')">
+            <b-button variant="secondary" v-show="$store.state.admin && user.id>1" class="btton" @click="move(user.id, 'up')">
               <b-icon icon="caret-up"></b-icon>
               <!--<b-icon icon="x"></b-icon>-->
             </b-button>
-            <b-button v-show="$store.state.admin && user.id<queue.length" disabled="true" class="btton" @click="move(user.id, 'down')">
+            <b-button variant="secondary" v-show="$store.state.admin && user.id<queue.length" disabled="true" class="btton" @click="move(user.id, 'down')">
               <b-icon icon="caret-down"></b-icon>
               <!--<b-icon icon="x"></b-icon>-->
             </b-button>
 
 
-            <b-button v-show="$store.state.admin || $store.state.user===user.name" class="button" @click="removeFromQueue(user.id)">
+            <b-button variant="primary" v-show="$store.state.admin || $store.state.user===user.name" class="button" @click="removeFromQueue(user.id)">
               <b-icon icon="trash"></b-icon>
               <!--<b-icon icon="x"></b-icon>-->
             </b-button>

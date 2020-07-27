@@ -11,8 +11,8 @@
         <p v-show="$store.state.loggedIn">Angemeldet als <b>{{inputName}}</b></p>
       </b-col>
       <b-col md="auto">
-        <b-button @click="login" v-show="inputName.length>0 && !$store.state.loggedIn">Anmelden</b-button>
-        <b-button @click="logout" v-show="$store.state.loggedIn">Abmelden</b-button>
+        <b-button variant="primary" @click="login" v-show="inputName.length>0 && !$store.state.loggedIn">Anmelden</b-button>
+        <b-button variant="secondary" @click="logout" v-show="$store.state.loggedIn">Abmelden</b-button>
       </b-col>
     </b-row>
   </b-container>
