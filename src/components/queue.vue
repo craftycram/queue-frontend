@@ -6,6 +6,7 @@
         <!--{{queue}}-->
       </b-col>
       <b-col v-show="$store.state.loggedIn===true" md="auto">
+        <b-button v-show="$store.state.admin" variant="secondary" @click="dummyData">DummyData</b-button>
         <b-button @click="addToQueue">In Warteschlange</b-button>
       </b-col>
     </b-row>
@@ -100,7 +101,14 @@
           id,
           dir
         });
-      }
+      },
+      dummyData() {
+        this.$socket.emit('add', {name: 'test1'});
+        this.$socket.emit('add', {name: 'test2'});
+        this.$socket.emit('add', {name: 'test3'});
+        this.$socket.emit('add', {name: 'test4'});
+        this.$socket.emit('add', {name: 'test5'});
+      },
     }
   }
 </script>
