@@ -23,7 +23,7 @@
               <b-icon icon="caret-up"></b-icon>
               <!--<b-icon icon="x"></b-icon>-->
             </b-button>
-            <b-button variant="secondary" v-show="$store.state.admin && user.id<queue.length" disabled="true" class="btton" @click="move(user.id, 'down')">
+            <b-button variant="secondary" v-show="$store.state.admin && user.id<queue.length" class="btton" @click="move(user.id, 'down')">
               <b-icon icon="caret-down"></b-icon>
               <!--<b-icon icon="x"></b-icon>-->
             </b-button>
