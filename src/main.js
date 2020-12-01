@@ -17,7 +17,7 @@ Vue.$cookies.config('7d')
 Vue.use(new VueSocketIO({
   debug: true,
   // eslint-disable-next-line no-template-curly-in-string
-  connection: 'https://ionos2.marcrufeis.de:3002',
+  connection: 'https://queue.glados.itmr-dev.de',
   options: {},
 }));
 
